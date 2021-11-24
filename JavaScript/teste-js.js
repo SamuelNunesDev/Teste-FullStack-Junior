@@ -78,9 +78,26 @@ const pessoas = [
 
 // TODO implementar função assíncrona e anônima separarPorIdade
 
+let separarPorIdade = async function(pessoas) {
+  let nomesIdadePar = await pessoas.filter(pessoa => parseInt(pessoa.idade) % 2 == 0);
+  let nomesIdadeImpar = pessoas.filter(pessoa => parseInt(pessoa.idade) % 2 == 1);
+
+  return {
+    nomesIdadePar: nomesIdadePar,
+    nomesIdadeImpar: nomesIdadeImpar
+  };
+};
+
 separarPorIdade(pessoas).then((resposta) => {
   // TODO imprimir no console a quantidade de nomes de pessoas com idade par. Saída esperada: 7
   // TODO imprimir no console a quantidade de nomes de pessoas com idade impar. Saída esperada: 7
   // TODO imprimir no console a os nomes de pessoas com idade par ordenados alfabeticamente. Saída esperada: ['Adriana', 'Bruno', 'Claudio', 'Flavia', 'Jaison', 'Marcia', 'Rafael']
   // TODO imprimir no console a os nomes de pessoas com idade ímpar ordenados alfabeticamente. Saída esperada: ['Ambrosina', 'André', 'Brenda', 'Carlinhos', 'Edenilson', 'José', 'Nivea']
+  
+  let nomesIdadeImpar = resposta.nomesIdadeImpar;
+  let nomesIdadePar = resposta.nomesIdadePar;
+  console.log(nomesIdadePar.length)
+  console.log(nomesIdadeImpar.length)
+  console.log(nomesIdadePar.map(nomesIdadePar => nomesIdadePar.nome).sort())
+  console.log(nomesIdadeImpar.map(nomesIdadeImpar => nomesIdadeImpar.nome).sort())
 });
